@@ -9,7 +9,7 @@ CREATE TABLE Admins(
 	Mobile bigint,
 	IsSuperAdmin BIT,
 	LastLoggedIn varchar(25),
-	Password VARCHAR(16),
+	Password nVARCHAR(max),
 	IsLoggedIn BIT,
 	IsDeleted BIT,
 	IsLocked BIT,
