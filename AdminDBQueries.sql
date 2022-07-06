@@ -1,7 +1,7 @@
 Create database ECommerceAdminDB
 
 use ECommerceAdminDB
-
+-- Admin Table
 CREATE TABLE Admins(
 	AdminID INT PRIMARY KEY IDENTITY(12345,11),
 	AdminName VARCHAR(50),
