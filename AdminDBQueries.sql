@@ -1,6 +1,8 @@
-Create database ECommerceAdminDB
+--Create database ECommerceAdminDB
 
 use ECommerceAdminDB
+
+
 -- Admins Table
 CREATE TABLE Admins(
 	AdminID INT PRIMARY KEY IDENTITY(12345,11),
@@ -15,6 +17,8 @@ CREATE TABLE Admins(
 	IsLocked BIT,
 	UnSuccessfulAttempts INT
 )
+
+
 --Contributions Table
 CREATE TABLE Contributions(
 	CID INT PRIMARY KEY IDENTITY(1,1),
@@ -25,3 +29,4 @@ CREATE TABLE Contributions(
 	Reason NVARCHAR(MAX)
 )
 
+select * from Admins
