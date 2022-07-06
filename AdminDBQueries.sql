@@ -1,7 +1,7 @@
 Create database ECommerceAdminDB
 
 use ECommerceAdminDB
--- Admin Table
+-- Admins Table
 CREATE TABLE Admins(
 	AdminID INT PRIMARY KEY IDENTITY(12345,11),
 	AdminName VARCHAR(50),
@@ -15,7 +15,7 @@ CREATE TABLE Admins(
 	IsLocked BIT,
 	UnSuccessfulAttempts INT
 )
-
+--Contributions Table
 CREATE TABLE Contributions(
 	CID INT PRIMARY KEY IDENTITY(1,1),
 	ChangeMadeBy INT FOREIGN KEY REFERENCES Admins(AdminID),
