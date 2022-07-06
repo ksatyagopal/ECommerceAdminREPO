@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerce.csproj": {}
+    "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerce.csproj": {
+    "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerce.csproj",
+        "projectUniqueName": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj",
         "projectName": "AdminECommerce",
-        "projectPath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerce.csproj",
+        "projectPath": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\obj\\",
+        "outputPath": "C:\\ECommerceAdminRepo\\AdminECommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
         }
       }
     }
