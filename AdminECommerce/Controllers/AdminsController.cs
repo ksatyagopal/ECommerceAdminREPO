@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AdminECommerce.Models;
+using AdminECommerceAPI;
 
 namespace AdminECommerce.Controllers
 {
@@ -14,6 +15,7 @@ namespace AdminECommerce.Controllers
     public class AdminsController : ControllerBase
     {
         private readonly ECommerceAdminDBContext _context;
+        private readonly Codes codes = new();
 
         public AdminsController(ECommerceAdminDBContext context)
         {
@@ -77,6 +79,7 @@ namespace AdminECommerce.Controllers
         [HttpPost]
         public async Task<ActionResult<Admin>> PostAdmin(Admin admin)
         {
+            admin.Password = codes.Hash(admin.Password);
             _context.Admins.Add(admin);
             await _context.SaveChangesAsync();
 
@@ -97,6 +100,46 @@ namespace AdminECommerce.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpGet("{mailid}/{password}")]
+        public async Task<string> AdminByCrendentials(string mailid, string password)
+        {
+            Admin admin = await _context.Admins.FirstOrDefaultAsync(e => e.Email == mailid);
+            if(admin == null)
+            {
+                return "noadmin";
+            }
+            if(admin != null && codes.Verify(password, admin.Password))
+            {
+                if (admin.IsDeleted == true)
+                {
+                    return "deleted";
+                }
+                if (admin.IsLocked == true)
+                {
+                    return "locked";
+                }
+                if (admin.IsLoggedIn == true)
+                {
+                    return "loggedin";
+                }
+                admin.LastLoggedIn = DateTime.Now.ToString();
+                admin.UnSuccessfulAttempts = 0;
+                admin.IsLoggedIn = true;
+                _context.SaveChanges();
+                return admin.AdminId.ToString();
+            }
+            if (admin.UnSuccessfulAttempts == 2)
+            {
+                admin.IsLocked = true;
+                admin.UnSuccessfulAttempts = admin.UnSuccessfulAttempts + 1;
+                _context.SaveChanges();
+                return "locked";
+            }
+            admin.UnSuccessfulAttempts = admin.UnSuccessfulAttempts + 1;
+            _context.SaveChanges();
+            return "invalid";
         }
 
         private bool AdminExists(int id)

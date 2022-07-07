@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "Sbs3JPkl3U+qr7IcqfIg9hUOOL3Q2TUQffnea4GFHGFbBgvXsO0bh+GmY6TQEE4YaQL3Ax6EaIOXFklRZyJ68Q==",
+  "dgSpecHash": "9MixfI/sG0SOlNYebNz4n4BSVJQQCwOV0OSLL8W5MBIRXge7fLdqis8aWopes/H//2DDL723l9wXNIO+EwrCvA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerceAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\bcrypt.net-next\\4.0.0\\bcrypt.net-next.4.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
