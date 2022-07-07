@@ -7336,11 +7336,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj",
-      "projectName": "AdminECommerce",
-      "projectPath": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerceAPI.csproj",
+      "projectName": "AdminECommerceAPI",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerceAPI.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\ECommerceAdminRepo\\AdminECommerce\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7410,7 +7410,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.409\\RuntimeIdentifierGraph.json"
       }
     }
   }

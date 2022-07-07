@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0vgsD7w68VnlS3rcaIQqlHJQ4NrJfKXt+DLtp3osDOnYN8Bom9b+iIDqQLKqCkuLs/FzuhwpDak374eFj8dpWA==",
+  "dgSpecHash": "Sbs3JPkl3U+qr7IcqfIg9hUOOL3Q2TUQffnea4GFHGFbBgvXsO0bh+GmY6TQEE4YaQL3Ax6EaIOXFklRZyJ68Q==",
   "success": true,
-  "projectFilePath": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerce.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerceAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
