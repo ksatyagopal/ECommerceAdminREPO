@@ -30,3 +30,7 @@ CREATE TABLE Contributions(
 )
 
 select * from Admins
+--delete from Admins
+
+update Admins
+set IsLoggedIn = 0

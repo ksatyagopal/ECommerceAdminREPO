@@ -96,10 +96,25 @@ namespace AdminECommerce.Controllers
                 return NotFound();
             }
 
-            _context.Admins.Remove(admin);
+            admin.IsDeleted = true;
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        [HttpHead("{id}")]
+        public async Task<string> LogoutAdmin(int id)
+        {
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin == null)
+            {
+                return "noadmin";
+            }
+
+            admin.IsLoggedIn = false;
+            await _context.SaveChangesAsync();
+
+            return "success";
         }
 
         [HttpGet("{mailid}/{password}")]
@@ -110,16 +125,16 @@ namespace AdminECommerce.Controllers
             {
                 return "noadmin";
             }
-            if(admin != null && codes.Verify(password, admin.Password))
+            if (admin.IsDeleted == true)
             {
-                if (admin.IsDeleted == true)
-                {
-                    return "deleted";
-                }
-                if (admin.IsLocked == true)
-                {
-                    return "locked";
-                }
+                return "deleted";
+            }
+            if (admin.IsLocked == true)
+            {
+                return "locked";
+            }
+            if (admin != null && codes.Verify(password, admin.Password))
+            {
                 if (admin.IsLoggedIn == true)
                 {
                     return "loggedin";
