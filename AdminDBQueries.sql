@@ -24,13 +24,16 @@ CREATE TABLE Contributions(
 	CID INT PRIMARY KEY IDENTITY(1,1),
 	ChangeMadeBy INT FOREIGN KEY REFERENCES Admins(AdminID),
 	Reference VARCHAR(30),
-	ChangesMade VARCHAR(30),
+	ChangesMade VARCHAR(MAX),
 	ChangedTime varchar(50),
 	Reason NVARCHAR(MAX)
 )
 
+
+use ECommerceAdminDB
 select * from Admins
---delete from Admins
+select * from Contributions
+--delete from Admins where AdminId = 12466
 
 update Admins
-set IsLoggedIn = 0
+set IsLoggedIn =0, IsLocked = 0, UnSuccessfulAttempts=0

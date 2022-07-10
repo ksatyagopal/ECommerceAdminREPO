@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace AdminECommerce.Models
+namespace AdminECommerceAPI.Models
 {
     public partial class ECommerceAdminDBContext : DbContext
     {
@@ -54,7 +54,7 @@ namespace AdminECommerce.Models
             modelBuilder.Entity<Contribution>(entity =>
             {
                 entity.HasKey(e => e.Cid)
-                    .HasName("PK__Contribu__C1F8DC59CDE4ACA7");
+                    .HasName("PK__Contribu__C1F8DC59F859A5F9");
 
                 entity.Property(e => e.Cid).HasColumnName("CID");
 
@@ -62,9 +62,7 @@ namespace AdminECommerce.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ChangesMade)
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
+                entity.Property(e => e.ChangesMade).IsUnicode(false);
 
                 entity.Property(e => e.Reference)
                     .HasMaxLength(30)
@@ -73,7 +71,7 @@ namespace AdminECommerce.Models
                 entity.HasOne(d => d.ChangeMadeByNavigation)
                     .WithMany(p => p.Contributions)
                     .HasForeignKey(d => d.ChangeMadeBy)
-                    .HasConstraintName("FK__Contribut__Chang__2A4B4B5E");
+                    .HasConstraintName("FK__Contribut__Chang__36B12243");
             });
 
             OnModelCreatingPartial(modelBuilder);

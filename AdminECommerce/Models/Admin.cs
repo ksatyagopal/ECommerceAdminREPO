@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace AdminECommerce.Models
+namespace AdminECommerceAPI.Models
 {
     public partial class Admin
     {

@@ -1,4 +1,5 @@
-using AdminECommerce.Models;
+using AdminECommerceAPI;
+using AdminECommerceAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,6 @@ namespace AdminECommerce
         {
             services.AddDbContext<ECommerceAdminDBContext>(options =>
        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddCors();
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -48,11 +48,16 @@ namespace AdminECommerce
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AdminECommerce v1"));
             }
-
+            ECommerceAdminDBContext _context = new();
+            foreach (var a in _context.Admins)
+            {
+                a.IsLoggedIn = false;
+            }
+            _context.SaveChanges();
             app.UseHttpsRedirection();
             app.UseCors(options => options.WithOrigins("http://localhost:4200/").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
             app.UseRouting();
-
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

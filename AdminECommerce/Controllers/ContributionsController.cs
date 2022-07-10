@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AdminECommerce.Models;
+using AdminECommerceAPI.Models;
 
 namespace AdminECommerce.Controllers
 {
@@ -77,6 +77,7 @@ namespace AdminECommerce.Controllers
         [HttpPost]
         public async Task<ActionResult<Contribution>> PostContribution(Contribution contribution)
         {
+            contribution.ChangedTime = DateTime.Now.ToString();
             _context.Contributions.Add(contribution);
             await _context.SaveChangesAsync();
 

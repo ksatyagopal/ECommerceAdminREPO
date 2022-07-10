@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AdminECommerce.Models;
+using AdminECommerceAPI.Models;
 using AdminECommerceAPI;
 
 namespace AdminECommerce.Controllers
@@ -16,6 +16,7 @@ namespace AdminECommerce.Controllers
     {
         private readonly ECommerceAdminDBContext _context;
         private readonly Codes codes = new();
+        public int otp = 0;
 
         public AdminsController(ECommerceAdminDBContext context)
         {
@@ -117,6 +118,19 @@ namespace AdminECommerce.Controllers
             return "success";
         }
 
+        [HttpGet("changeP/{mailid}/{password}")]
+        public async Task<IActionResult> ChangePassword(string mailid, string password)
+        {
+            Admin admin = await _context.Admins.FirstOrDefaultAsync(e => e.Email == mailid);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            admin.Password = codes.Hash(password);
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
         [HttpGet("{mailid}/{password}")]
         public async Task<string> AdminByCrendentials(string mailid, string password)
         {
@@ -132,6 +146,10 @@ namespace AdminECommerce.Controllers
             if (admin.IsLocked == true)
             {
                 return "locked";
+            }
+            if (admin.IsLoggedIn == true)
+            {
+                return "loggedin";
             }
             if (admin != null && codes.Verify(password, admin.Password))
             {
@@ -155,6 +173,27 @@ namespace AdminECommerce.Controllers
             admin.UnSuccessfulAttempts = admin.UnSuccessfulAttempts + 1;
             _context.SaveChanges();
             return "invalid";
+        }
+
+        [HttpGet("ForgotPassword/{mailid}")]
+        public async Task<string> ForgotPassword(string mailid)
+        {
+            Random random = new();
+            var admin = await _context.Admins.FirstOrDefaultAsync(a=>a.Email==mailid);
+            if (admin == null)
+            {
+                return "noadmin";
+            }
+            otp = random.Next(100000, 999999);
+            var subject = $"ShopX - {otp} is your verification code for secure access";
+            var mailbody = $"Hi {admin.AdminName},\n\n" +
+                $"We are sharing a verification code to access your account." +
+                $"\nOnce verified you are redirected to reset your password." +
+                $"\n\nYour OTP: {otp}\n\n" +
+                $"Note: If you haven't raised this request please contact superiors as soon as possible.\n" +
+                $"\nBest Regards,\n ShopX Team";
+            codes.SendEmail(subject, mailbody, admin.Email);
+            return otp.ToString();
         }
 
         private bool AdminExists(int id)
