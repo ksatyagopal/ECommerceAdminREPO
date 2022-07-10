@@ -18,6 +18,7 @@ namespace AdminECommerceAPI.Models
         }
 
         public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Contribution> Contributions { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -49,6 +50,21 @@ namespace AdminECommerceAPI.Models
                 entity.Property(e => e.LastLoggedIn)
                     .HasMaxLength(25)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Chat>(entity =>
+            {
+                entity.Property(e => e.SentTime).HasColumnType("datetime");
+
+                entity.HasOne(d => d.MessageFromNavigation)
+                    .WithMany(p => p.ChatMessageFromNavigations)
+                    .HasForeignKey(d => d.MessageFrom)
+                    .HasConstraintName("FK__Chats__MessageFr__49C3F6B7");
+
+                entity.HasOne(d => d.MessageToNavigation)
+                    .WithMany(p => p.ChatMessageToNavigations)
+                    .HasForeignKey(d => d.MessageTo)
+                    .HasConstraintName("FK__Chats__MessageTo__4AB81AF0");
             });
 
             modelBuilder.Entity<Contribution>(entity =>

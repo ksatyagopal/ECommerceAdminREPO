@@ -128,6 +128,12 @@ namespace AdminECommerce.Controllers
             }
             admin.Password = codes.Hash(password);
             await _context.SaveChangesAsync();
+            var subject = $"ShopX - Password Change Successfull";
+            var mailbody = $"Hi {admin.AdminName},\n\n" +
+                $"Your password changed successfully.\n\n" +
+                $"Note: If you haven't raised this request please contact superiors as soon as possible.\n" +
+                $"\nBest Regards,\n ShopX Team";
+            codes.SendEmail(subject, mailbody, admin.Email);
             return Ok();
         }
 

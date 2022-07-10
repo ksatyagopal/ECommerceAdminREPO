@@ -9,6 +9,8 @@ namespace AdminECommerceAPI.Models
     {
         public Admin()
         {
+            ChatMessageFromNavigations = new HashSet<Chat>();
+            ChatMessageToNavigations = new HashSet<Chat>();
             Contributions = new HashSet<Contribution>();
         }
 
@@ -24,6 +26,8 @@ namespace AdminECommerceAPI.Models
         public bool? IsLocked { get; set; }
         public int? UnSuccessfulAttempts { get; set; }
 
+        public virtual ICollection<Chat> ChatMessageFromNavigations { get; set; }
+        public virtual ICollection<Chat> ChatMessageToNavigations { get; set; }
         public virtual ICollection<Contribution> Contributions { get; set; }
     }
 }

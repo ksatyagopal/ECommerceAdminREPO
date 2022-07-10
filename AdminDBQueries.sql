@@ -29,11 +29,22 @@ CREATE TABLE Contributions(
 	Reason NVARCHAR(MAX)
 )
 
+create table Chats(
+	ChatId int primary key Identity(1,1),
+	MessageFrom int foreign key references Admins(AdminId),
+	MessageTo int foreign key references Admins(AdminId),
+	[Message] nvarchar(max),
+	SentTime datetime,
+	IsViewed bit,
+	IsDeleted bit,
+	IsCalled bit
+)
+
 
 use ECommerceAdminDB
 select * from Admins
 select * from Contributions
 --delete from Admins where AdminId = 12466
 
-update Admins
-set IsLoggedIn =0, IsLocked = 0, UnSuccessfulAttempts=0
+--update Admins
+set IsLoggedIn=0, IsLocked = 0, UnSuccessfulAttempts=0
