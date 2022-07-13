@@ -43,8 +43,8 @@ create table Chats(
 
 use ECommerceAdminDB
 select * from Admins
-select * from Contributions
---delete from Admins where AdminId = 12466
+select * from Chats
+--delete from Chats where ChatId=5
 
 --update Admins
 set IsLoggedIn=0, IsLocked = 0, UnSuccessfulAttempts=0

@@ -87,22 +87,6 @@ namespace AdminECommerce.Controllers
             return CreatedAtAction("GetAdmin", new { id = admin.AdminId }, admin);
         }
 
-        // DELETE: api/Admins/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAdmin(int id)
-        {
-            var admin = await _context.Admins.FindAsync(id);
-            if (admin == null)
-            {
-                return NotFound();
-            }
-
-            admin.IsDeleted = true;
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
         [HttpHead("{id}")]
         public async Task<string> LogoutAdmin(int id)
         {
@@ -127,6 +111,8 @@ namespace AdminECommerce.Controllers
                 return NotFound();
             }
             admin.Password = codes.Hash(password);
+            admin.IsLocked = false;
+            admin.UnSuccessfulAttempts = 0;
             await _context.SaveChangesAsync();
             var subject = $"ShopX - Password Change Successfull";
             var mailbody = $"Hi {admin.AdminName},\n\n" +
@@ -200,6 +186,22 @@ namespace AdminECommerce.Controllers
                 $"\nBest Regards,\n ShopX Team";
             codes.SendEmail(subject, mailbody, admin.Email);
             return otp.ToString();
+        }
+
+        // DELETE: api/Admins/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAdmin(int id)
+        {
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            admin.IsDeleted = true;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
         private bool AdminExists(int id)

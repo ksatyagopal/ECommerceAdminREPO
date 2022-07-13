@@ -88,6 +88,10 @@ namespace AdminECommerceAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Chat>> PostChat(Chat chat)
         {
+            chat.IsViewed = false;
+            chat.IsDeleted = false;
+            chat.IsCalled = false;
+            chat.SentTime = DateTime.Now;
             _context.Chats.Add(chat);
             await _context.SaveChangesAsync();
 
