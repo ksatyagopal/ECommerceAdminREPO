@@ -24,13 +24,27 @@ CREATE TABLE Contributions(
 	CID INT PRIMARY KEY IDENTITY(1,1),
 	ChangeMadeBy INT FOREIGN KEY REFERENCES Admins(AdminID),
 	Reference VARCHAR(30),
-	ChangesMade VARCHAR(30),
+	ChangesMade VARCHAR(MAX),
 	ChangedTime varchar(50),
 	Reason NVARCHAR(MAX)
 )
 
-select * from Admins
---delete from Admins
+create table Chats(
+	ChatId int primary key Identity(1,1),
+	MessageFrom int foreign key references Admins(AdminId),
+	MessageTo int foreign key references Admins(AdminId),
+	[Message] nvarchar(max),
+	SentTime datetime,
+	IsViewed bit,
+	IsDeleted bit,
+	IsCalled bit
+)
 
-update Admins
-set IsLoggedIn = 0
+
+use ECommerceAdminDB
+select * from Admins
+select * from Chats
+--delete from Chats where ChatId=5
+
+--update Admins
+set IsLoggedIn=0, IsLocked = 0, UnSuccessfulAttempts=0
