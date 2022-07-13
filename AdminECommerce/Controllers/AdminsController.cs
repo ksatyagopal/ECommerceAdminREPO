@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using AdminECommerce.Models;
 using AdminECommerceAPI;
+using AdminECommerceAPI.Models;
 
 namespace AdminECommerce.Controllers
 {
@@ -148,11 +148,11 @@ namespace AdminECommerce.Controllers
             if (admin.UnSuccessfulAttempts == 2)
             {
                 admin.IsLocked = true;
-                admin.UnSuccessfulAttempts = admin.UnSuccessfulAttempts + 1;
+                admin.UnSuccessfulAttempts ++ ;
                 _context.SaveChanges();
                 return "locked";
             }
-            admin.UnSuccessfulAttempts = admin.UnSuccessfulAttempts + 1;
+            admin.UnSuccessfulAttempts ++;
             _context.SaveChanges();
             return "invalid";
         }

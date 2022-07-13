@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9MixfI/sG0SOlNYebNz4n4BSVJQQCwOV0OSLL8W5MBIRXge7fLdqis8aWopes/H//2DDL723l9wXNIO+EwrCvA==",
+  "dgSpecHash": "mnEWyHbHzaeLFLmena3J8lLtqeuLUhLRNq5UDqZkr3HQJHVDjHc6Q84eeoxlj2Uv4F5biGlWQz8pbU6w1Gs9FA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Eurofins\\Angular\\ECommerce\\ECommerceAdminREPO\\AdminECommerce\\AdminECommerceAPI.csproj",
+  "projectFilePath": "C:\\ECommerceAdminRepo\\AdminECommerce\\AdminECommerceAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\bcrypt.net-next\\4.0.0\\bcrypt.net-next.4.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
